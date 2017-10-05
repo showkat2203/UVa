@@ -1,0 +1,31 @@
+#include <bits/stdc++.h>
+
+using namespace std ;
+
+#define Maxi 1000050
+#define sq sqrt(Maxi)
+
+bool yes_no[Maxi] ;
+int prime[80000] ;
+
+map < int , int > differ ;
+
+void seive()
+{
+    int n, i, j, k =0 ;
+    memset( yes_no, false, sizeof yes_no ) ;
+    yes_no[0] = yes_no[1] = true ;
+    yes_no[2] = false ;
+    prime[k++] = 2;
+    for( i = 3; i <= sq; i += 2 )
+        if( yes_no[i] == false )
+            for( j = i * i ; j <= Maxi; j += ( 2 * i ) )
+                yes_no[j] = true ;
+
+    for( i = 3; i <= Maxi; i += 2 )
+        if( yes_no[i] == false )
+            prime[k++] = i ;
+    //printf("%d\n", k) ;
+//    for( i = 0; i < k; i++ )
+//        printf("%d\n", prime[i]) ;
+}
